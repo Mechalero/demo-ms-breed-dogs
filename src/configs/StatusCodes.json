@@ -1,0 +1,31 @@
+{
+	"success": {
+        "code"	: 200,
+        "text" : "Operación finalizada con éxito"
+    },
+	"server_error": {
+        "code"	: 500,
+        "text" : "Error de servidor. Por favor intenta en unos minutos"
+    },
+    "not_found": {
+    	"code"	: 404,
+        "text" : "404 No encontrado"
+    },
+    "bad_request": {
+    	"code"	: 400,
+      "text" : "400 Petición mala"
+    },
+    "no_token": {
+    	"code"	: 401,
+        "text" : "401 Sin  autorización"
+    },
+    "email_in_use":{
+    	"code"	: 405,
+    	"text" : "El email ya se encuentra registrado."
+    },
+    "created":{
+    	"code"	: 201,
+    	"text" : "Se ha creadoc con éxito!"
+
+    }
+ }

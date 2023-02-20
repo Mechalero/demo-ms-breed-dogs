@@ -1,0 +1,51 @@
+version: '3.1'
+
+services:
+#database engine service
+  postgres_db_dev:
+    container_name: postgres_dev
+    image: postgres:latest
+    restart: always
+    networks:
+      - env_dev 
+    ports:
+      - 5432:5432
+    #volumes:
+    #  - /var/lib/postgres:/var/lib/postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_ROOT_PASSWORD: Mechalero1234.
+      POSTGRES_PASSWORD: Mechalero1234.
+      POSTGRES_DB: db_ms_dogs  
+      
+#database admin service
+#Use for All enviroments
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    networks:
+      - env_dev
+    depends_on: 
+      - postgres_db_dev
+    ports:
+       - 8080:8080
+
+#ENV_DEV
+#network 
+networks:
+  env_dev:
+    driver: bridge  
+    #activate ipv6
+    driver_opts: 
+            com.docker.network.enable_ipv6: "true"
+    #IP Adress Manager
+    ipam: 
+        driver: default
+        config:
+        - 
+          subnet: 172.16.232.0/24
+          gateway: 172.16.232.1
+        - 
+          subnet: "2001:3974:3979::/64"
+          gateway: "2001:3974:3979::1"
